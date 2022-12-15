@@ -1,0 +1,27 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Faucet
+    network: bsc
+    source:
+      address: "0x531e59fDEc6D12cbf2E063727aC313E4025461a4"
+      abi: Faucet
+      startBlock: 25443147
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - DonateToken
+        - RequestToken
+      abis:
+        - name: Faucet
+          file: Faucet/abis/Faucet.json
+      eventHandlers:
+        - event: DonateToken(indexed address,indexed address,uint256)
+          handler: handleDonateToken
+        - event: RequestToken(indexed address,uint256,address)
+          handler: handleRequestToken
+      file: Faucet/Faucet.wasm

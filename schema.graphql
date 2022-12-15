@@ -1,0 +1,14 @@
+type DonateEntity @entity {
+  id: ID!
+  count: BigInt!
+  amount: BigInt!
+  from: Bytes! # address
+  to: Bytes! # address
+}
+
+type RequestTokenEntity @entity {
+  id: ID!
+  tokenAddress: Bytes! #address
+  to: Bytes! # address
+  amount: BigInt!
+}
